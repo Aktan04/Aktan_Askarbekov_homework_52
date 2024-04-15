@@ -14,10 +14,24 @@
         </div>
         <div class="col-md-8">
             <ul class="list-group">
-                <li class="list-group-item"><strong>Id:</strong> @Model.Id</li>
                 <li class="list-group-item"><strong>Name:</strong> @Model.Name</li>
                 <li class="list-group-item"><strong>Price:</strong> @Model.Price</li>
-                <li class="list-group-item"><strong>Description:</strong> @Model.Description</li>
+                @if (Model.Description != null)
+                {
+                    <li class="list-group-item"><strong>Date of Editing:</strong> @Model.Description</li>
+                }
+                else
+                {
+                    <li class="list-group-item"><strong>Описаниe к сожалению пока не добавили</strong></li>
+                }
+                <li class="list-group-item"><strong>Price in other currencies:</strong>
+                    <ul>
+                        @foreach (var currency in ViewBag.Currencies)
+                        {
+                            <li>@currency.CurrencyName: @(Model.Price * currency.CurrencyRate) @currency.CurrencyCode</li>
+                        }
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

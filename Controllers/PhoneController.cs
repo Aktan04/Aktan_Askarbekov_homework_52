@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using PhoneProject.Models;
 
@@ -6,10 +7,12 @@ namespace PhoneProject.Controllers;
 public class PhoneController : Controller
 {
     private MobileContext _db;
+    private readonly IWebHostEnvironment _env; 
 
-    public PhoneController(MobileContext db)
+    public PhoneController(MobileContext db, IWebHostEnvironment env)
     {
         _db = db;
+        _env = env;
     }
     
     // GET
@@ -102,6 +105,15 @@ public class PhoneController : Controller
             return NotFound();
         }
 
+        List<Currency> currencies;
+
+        string jsonFilePath = Path.Combine(_env.WebRootPath, "currencies.json");
+
+        currencies = JsonSerializer.Deserialize<List<Currency>>(System.IO.File.ReadAllText(jsonFilePath));
+
+        ViewBag.Currencies = currencies;
+        
         return View(product);
+
     }
 }
