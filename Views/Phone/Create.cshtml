@@ -1,0 +1,21 @@
+@model Phone
+
+@{
+    ViewBag.Title = "CreatePhone";
+    Layout = "_Layout";
+}
+
+<h2>Заполните форму для добавления устройства</h2>
+
+<div class="row">
+
+    <div class="phone_add_form col-md-6">
+
+        <form asp-action="Create" method="post">
+
+            @await Html.PartialAsync("_CreateEditForm", new Phone())
+            
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+</div>

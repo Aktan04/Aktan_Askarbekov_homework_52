@@ -1,0 +1,24 @@
+@model Phone
+
+@{
+    ViewBag.Title = "EditPhone";
+    Layout = "_Layout";
+}
+
+<h2>Редактирование</h2>
+
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <form asp-action="Edit" asp-controller="Phone" method="post">
+            <input asp-for="Id" type="hidden" value="@Model.Id"/>
+            @await Html.PartialAsync("_CreateEditForm", Model)
+
+            
+            <button type="submit" > Изменить </button>
+        </form>
+    </div>
+
+</div>
