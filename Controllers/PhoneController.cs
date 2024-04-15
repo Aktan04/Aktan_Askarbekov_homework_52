@@ -92,4 +92,16 @@ public class PhoneController : Controller
 
         return NotFound();
     }
+    
+    public IActionResult Details(int id)
+    {
+        
+        var product = _db.Phones.FirstOrDefault(p => p.Id == id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        return View(product);
+    }
 }

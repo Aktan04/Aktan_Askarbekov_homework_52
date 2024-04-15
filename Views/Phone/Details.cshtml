@@ -1,0 +1,24 @@
+@model Phone
+
+@{
+    ViewBag.Title = "DetailsOfPhone";
+    Layout = "_Layout";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-fluid" src="@Model.Avatar" alt="@Model.Name Avatar">
+        </div>
+        <div class="col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Id:</strong> @Model.Id</li>
+                <li class="list-group-item"><strong>Name:</strong> @Model.Name</li>
+                <li class="list-group-item"><strong>Price:</strong> @Model.Price</li>
+                <li class="list-group-item"><strong>Description:</strong> @Model.Description</li>
+            </ul>
+        </div>
+    </div>
+</div>
